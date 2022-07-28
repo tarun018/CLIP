@@ -368,6 +368,9 @@ class CLIP(nn.Module):
         logits_per_image = logit_scale * image_features @ text_features.t()
         logits_per_text = logits_per_image.t()
 
+        print("\tIn Model: input size", image.size(),
+              "output size", image_features.size())
+
         # shape = [global_batch_size, global_batch_size]
         return logits_per_image, logits_per_text, image_features, text_features
 
